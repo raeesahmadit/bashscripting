@@ -1,0 +1,26 @@
+Shell is a user interface used to execute commands and interect with kernel
+
+      application
+          |
+         Shell
+          |
+        kernel
+          |
+        Hardware
+
+types of shell : bash, sh, ksh, tsh, fish, zsh
+most commomd is bash by default in linux
+
+to check the default shell of linux : echo $0  
+to check other shells supported : cat /etc/shells
+
+shell scripting consist of set of command to perform a task, execute sequentially, automation
+
+.sh to recognise it is a script
+
+#!/bin/bash  : sheband - will be at start and write the code then
+
+
+to run a script : ./script.sh
+                : /path/script.sh
+                : bash script.sh
