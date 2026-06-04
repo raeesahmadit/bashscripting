@@ -27,3 +27,8 @@ elif : if [[ $age == 0 ]]
        else
          echo "you are young"
         fi
+
+short form of if else and multi operations anywhere in script
+execute condition2 only when condition1 is true else execute condition3
+      read -p "enter age: " age
+      [[ $age -ge 12 ]] && echo "Adult" || echo "Minor"
