@@ -1,0 +1,18 @@
+data from csv(coma seprated values) file using while loop: 
+
+                  while IFS="-" read id name age       # IFS will separate exact accorfing to given value in ""
+                  do 
+                     echo "id is $id"
+                     echo "name is $name"
+                     echo " age is $age"
+                  done < test.csv                      # path of the file
+
+
+another way:
+
+cat test.csv | awk 'NR!=1 {print}' | while IFS="-" read id name age     # awk 'NR!=1 {print}' will ignore the first line
+do 
+           echo "id is $id"
+           echo "name is $name"
+           echo "age is $age"
+done
