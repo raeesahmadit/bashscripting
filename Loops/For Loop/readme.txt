@@ -31,3 +31,10 @@ for loop in aarays:
                     do
                         echo "Value of aaray is: ${myarray[$i]}"
                     done
+
+infinite loop:
+                 for (( ;; ))
+                 do 
+                     echo "hi raees"
+                     sleep 2s                                 #it will pause for 2 sec
+                  done
