@@ -1,0 +1,22 @@
+-to access the argument:
+                  echo "1st argument is: $1"            # when run the test.sh raees ahmad 12 34
+                  echo "2nd argument is: $2"
+                  echo "all arguments: $@"
+                  echo "number of arguments: $#"
+         
+         its output:   1st argument is: raees
+                       2nd argument is: ahamd
+                       all arguments: raees ahamd 12 34
+                       number of arguments: 4
+
+    -for loop to access argument's values:   
+             for fname in $@                          # useful for fileback path one by one
+              do                                      # test.sh test1.csv test2.csv
+                 echo "copying file - $fname"
+             done
+
+-shifting arguments: when we pass multipple arguments
+            echo "creating user"                     
+            echo "user is :$1"
+            shift                                    # it will ignore 1st and then take all remaining as a one argumnet
+            echo "description is $@: 

@@ -1,0 +1,10 @@
+add ()
+{
+    local sum= $(($1+$2))
+    echo "the sum of $1 and $2 is $sum"
+}
+
+read -p "enter 1st:" a
+read -p "enter 2nd:" b
+
+add $a $b
