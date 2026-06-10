@@ -1,0 +1,5 @@
+free -mt
+grep
+awk
+if/else
+echo
