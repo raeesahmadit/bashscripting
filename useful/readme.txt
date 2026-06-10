@@ -58,3 +58,7 @@
    example:
            n=$(( $RANDOM % 6 + 1 ))               #it will show number between 1-6 like dice
            echo "Number is: $n"
+
+- to run a command on background even after close the terminal normaly files dtop when close the terminal
+
+       nohup /filename.sh &
