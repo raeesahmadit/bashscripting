@@ -1,5 +1,5 @@
-free -mt
-grep
-awk
-if/else
-echo
+free -mt   - to see the Ram related data
+grep       - to get a specific data
+awk        - to get a specific column
+if/else    - condition
+echo       - print the value
