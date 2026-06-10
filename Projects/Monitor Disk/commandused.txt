@@ -1,0 +1,5 @@
+if/else - condition check
+df      - to check space of disk
+grep    - to grep a specific data
+awk     - to get a specific column value
+tr      - to remove extra other than value
