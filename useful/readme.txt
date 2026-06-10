@@ -15,7 +15,26 @@
               if [ -f filename]        if file exist
               [ ! -f filename]         if file not exist
 
--check the website connecctivity with ping command: 
+  example:   read -p "enter the file name: " a
+             path="home/ibtu/Desktop/bashing/$a"
+             if [[ -f $path ]]
+             then 
+                 echo "file exist"
+             else
+                 echo " file not exist!! do you want to make?"
+                 read -p "press 0 to make and 1 to exit"
+                 if [[ $q -eq 0 ]]
+                 then 
+                     touch $path
+                     echo "$path: File is Created!!"
+                 else 
+                     echo "have a nice day"
+                 exit
+                 fi
+              fi
+
+
+-check the website connectivity with ping command: 
             read -p "enter website: " a
             ping -c 1 $a
             #sleep 2s
@@ -33,4 +52,9 @@
              else
              echo "you are not root user"
              fi
-            
+
+-random: also show random value between 0 to 32767
+            echo $RANDOM
+   example:
+           n=$(( $RANDOM % 6 + 1 ))               #it will show number between 1-6 like dice
+           echo "Number is: $n"
