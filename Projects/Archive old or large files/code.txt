@@ -1,0 +1,44 @@
+requirement: -in a folder find more than given size or files older than given days
+             - compare those and move in 'archive folder'
+
+steps : 1. provide the path of directory
+        2. check if directory is present or not
+        3. create archive folder if already is not present
+        4. find all files with size more than 20mb
+        5. compress each file
+        6. move the compressed files in archive folder
+        7. make a cron job to run the script every day at given time
+
+code:
+
+#!/bin/bash
+#$revision:001$
+
+-#variabales
+base=/home/ibtu/Desktop/bashing
+depth=0
+run=0
+days=7
+
+-#check if the directory is present or not
+   if [[ ! -d $base ]]
+     then 
+         echo "Directory is not present: $base"
+         exit 1
+   
+   
+-#check if archive folder is not present
+   if [[ ! -d archive ]]
+     then
+        mkdir -p "$base/archive"
+   fi
+
+-#find the list of files larger than 100c and older than 7 days
+  find "$base" -maxdepth "$depth" -type f -size 100c -mtime +"$days" | while read -r 
+   do 
+       if [[ $run -eq 0 ]]
+         then
+           gzip -N "$i" || exit 2
+           mv "$i.gz" "$base/archive/" || exit1
+       fi
+   done
