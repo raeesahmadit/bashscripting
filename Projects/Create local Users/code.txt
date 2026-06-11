@@ -1,0 +1,72 @@
+requirements:   1. script should run with root user only else show error
+                2. script will take 1st argument and rest will be description
+                3. auto generate password for that user
+                4. after making successfully show all the details
+
+steps:          1. check the script is being executed with super user
+                2. if user dont put any argument give him a help
+                3. 1st parameter is username and rest is description
+                4. generate password
+                5. create user with the password
+                6. password change on first login
+                7. see successfully user is created
+
+to see present users: getent passwd
+to delete a user: sudo deluser -remove-home [username]
+
+code:
+        #!/bin/bash
+
+        #script should be executed with root / sudo
+        if [[ "${UID}" -ne 0 ]]
+        then 
+            echo "Please Login as Root or use Sudo"
+        fi
+
+        #user should provide one argument atleast
+        if [[ "${#}" -lt 1]]
+        then 
+            echo "Atleast provide user name"
+            echo "Usage: ${0} [User-name] [Description]"
+            exit 1
+        fi
+
+        #store 1st argument as a user name
+        username="${1}"
+
+        #after first argument remain use as a description
+        shift
+        des="${@}"
+
+        #create password
+        password=$(date +%b%Y%S)
+
+        #create a user
+        useradd -c "$des" -m $username
+
+        #check user is created or not
+        if [[ $? -ne 0 ]]
+        then 
+            echo "User is not Created!"
+            exit 1
+        fi
+
+        #set password for the user
+        echo $password | passwd --stdin $username
+
+        #check password is created or not
+        if [[ $? -ne 0 ]]
+        then 
+            echo "Password is not set for the $username"
+            exit 1
+        fi
+
+        #ask for password change on 1st login
+        passwd -e $username
+
+        #display all the details after user is created
+        echo
+        echo "User Name: $username"
+        echo "$username : $des"
+        echo "Password: $password"
+        echo "User is Created by: $(hostname)"
